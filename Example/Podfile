@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'JMToolKit_Example' do
+  pod 'JMToolKit', :path => '../'
+
+  target 'JMToolKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
