@@ -8,10 +8,10 @@
 
 import UIKit
 
-extension UIViewController {
-    static internal func instanceWithDefaultNib() -> Self {
+public extension UIViewController {
+    static func instanceWithDefaultNib() -> Self {
         let className = NSStringFromClass(self as AnyClass).components(separatedBy: ".").last
-        return self.init(nibName: className, bundle: Bundle.bundle())
+        return self.init(nibName: className, bundle: Bundle.main)
     }
     
     func isModal() -> Bool {

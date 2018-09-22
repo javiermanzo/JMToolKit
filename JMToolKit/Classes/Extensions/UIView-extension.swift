@@ -8,13 +8,12 @@
 
 import UIKit
 
-extension UIView {
-    
+public extension UIView {
     static internal func instanceWithDefaultNib() -> UIView? {
         if let className = NSStringFromClass(self as AnyClass).components(separatedBy: ".").last {
             return UINib(
                 nibName: className,
-                bundle: Bundle.bundle()
+                bundle: Bundle.main
                 ).instantiate(withOwner: nil, options: nil)[0] as? UIView
         } else {
             return nil

@@ -8,8 +8,7 @@
 
 import UIKit
 
-extension UITableView {
-    
+public extension UITableView {
     func registerCellClass<T: UITableViewCell>(_: T.Type) {
         self.register(T.cellNib, forCellReuseIdentifier: T.reusableIdentifier)
     }

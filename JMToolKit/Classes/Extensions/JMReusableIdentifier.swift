@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol JMReusableIdentifier {
+public protocol JMReusableIdentifier {
     static var reusableIdentifier: String { get }
 }
 
-extension JMReusableIdentifier {
+public extension JMReusableIdentifier {
     static var reusableIdentifier: String {
         return "\(self)"
     }
