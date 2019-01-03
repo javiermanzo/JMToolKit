@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JMToolKit'
-  s.version          = '0.1.0'
+  s.version          = '0.1.2'
   s.summary          = 'Group of helpers.'
 
 
@@ -25,6 +25,6 @@ TODO: Add long description of the pod here.
   s.source_files = ['JMToolKit/Classes/**/*.{h,m,swift}']
 
   s.ios.deployment_target = '11.0'
-  s.swift_version = '4.1'
+  s.swift_version = '4.2'
 
 end

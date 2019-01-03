@@ -1,13 +1,13 @@
 //
-//  UITableViewCell-extension.swift
+//  UICollectionViewCell-extension.swift
 //  JMToolKit
 //
 //  Copyright © 2019 Javier Manzo. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-extension UITableViewCell: JMReusableIdentifier {
+extension UICollectionViewCell: JMReusableIdentifier {
     static internal var cellNib: UINib {
         return UINib(nibName: self.reusableIdentifier, bundle: Bundle.main)
     }
