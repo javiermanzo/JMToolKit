@@ -7,17 +7,17 @@
 
 import UIKit
 
-public extension UIViewController {
-    static func instanceWithDefaultNib() -> Self {
+extension UIViewController {
+    static public func instanceWithDefaultNib() -> Self {
         let className = NSStringFromClass(self as AnyClass).components(separatedBy: ".").last
         return self.init(nibName: className, bundle: Bundle.main)
     }
 
-    func isModal() -> Bool {
+    public func isModal() -> Bool {
         return (self.presentingViewController?.presentedViewController == self)
     }
 
-    func pushViewControllerAndRemoveSelfFromStack(viewController: UIViewController) {
+    public func pushViewControllerAndRemoveSelfFromStack(viewController: UIViewController) {
         if var viewControllers = self.navigationController?.viewControllers,
             let index = viewControllers.index(of: self) {
             viewControllers.remove(at: index)
@@ -26,7 +26,7 @@ public extension UIViewController {
         }
     }
 
-    func removeFromStack() {
+    public func removeFromStack() {
         if var viewControllers = self.navigationController?.viewControllers,
             let index = viewControllers.index(of: self) {
             viewControllers.remove(at: index)
@@ -34,21 +34,21 @@ public extension UIViewController {
         }
     }
 
-    func addKeyboardObservers() {
+    public func addKeyboardObservers() {
         NotificationCenter.default.addObserver( self, selector: .keybaordWillShow, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: .keyboardWillHide, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    func removeKeyboardObservers() {
+    public func removeKeyboardObservers() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    @objc func keyboardWillShow(notification: NSNotification) {
+    @objc open func keyboardWillShow(notification: NSNotification) {
         // override this method
     }
 
-    @objc func keyboardWillHide(notification: NSNotification) {
+    @objc open func keyboardWillHide(notification: NSNotification) {
         // override this method
     }
 }

@@ -15,12 +15,14 @@ public extension UIImage {
         return nil
     }
 
-    func scaleImage(toSize newSize: CGSize) -> UIImage {
+    func scaleImage(toSize newSize: CGSize) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
         self.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: newSize.width, height: newSize.height)))
-        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return newImage
+        if let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext() {
+            UIGraphicsEndImageContext()
+            return newImage
+        }
+        return nil
     }
 
     func compressTo(expectedSizeInKB: Int) -> Data? {

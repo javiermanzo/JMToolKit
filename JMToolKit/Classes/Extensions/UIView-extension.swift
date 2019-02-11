@@ -19,12 +19,13 @@ public extension UIView {
         }
     }
 
-    func setUpShadow(color: CGColor = UIColor.lightGray.cgColor, opacity: Float = 0.3, offset: CGSize = CGSize.zero, radius: CGFloat = 10) {
-        self.layer.shadowColor = color
-        self.layer.shadowOpacity = opacity
-        self.layer.shadowOffset = offset
-        self.layer.shadowRadius = radius
+    func setUpShadow(color: UIColor = .lightGray, opacity: Float = 0.4, offset: CGSize = CGSize.zero) {
         self.layer.masksToBounds = false
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).cgPath
+        self.layer.shadowOffset = offset
+        self.layer.shadowOpacity = opacity
+        self.layer.shadowRadius = 1
     }
 
     func roundCorners(cornerRadius: CGFloat = 4, clipsToBounds: Bool = true) {

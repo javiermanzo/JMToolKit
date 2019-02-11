@@ -27,13 +27,19 @@ public extension UITableView {
         self.tableFooterView = UIView()
     }
 
-    func scrollToBottom(section: Int, animated: Bool) {
-        let elements = self.numberOfRows(inSection: section)
-        if elements > 0 {
+    func scrollToBottom(section: Int? = nil, animated: Bool) {
+        let sectionPosition: Int
+        if let section = section {
+            sectionPosition = section
+        } else {
+            sectionPosition = self.numberOfSections > 0 ? self.numberOfSections - 1 : 0
+        }
+        let elements = self.numberOfRows(inSection: sectionPosition)
+        if elements != NSNotFound && elements > 0 {
             DispatchQueue.main.async {
                 let rowIndex = elements - 1
-                let indexPath = IndexPath(row: rowIndex, section: section)
-                self.scrollToRow(at: indexPath, at: .bottom, animated: animated)
+                let indexPath = IndexPath(row: rowIndex, section: sectionPosition)
+                self.scrollToRow(at: indexPath, at: .top, animated: animated)
             }
         }
     }

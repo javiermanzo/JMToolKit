@@ -8,6 +8,10 @@
 import Foundation
 
 public extension String {
+    func localized(withComment comment: String? = nil) -> String {
+        return NSLocalizedString(self, comment: comment ?? "")
+    }
+    
     func JSONStringtoDictionary() -> [String: Any]? {
         if let data = self.data(using: .utf8) {
             do {
