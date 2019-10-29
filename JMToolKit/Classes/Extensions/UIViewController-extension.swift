@@ -19,7 +19,7 @@ extension UIViewController {
 
     public func pushViewControllerAndRemoveSelfFromStack(viewController: UIViewController) {
         if var viewControllers = self.navigationController?.viewControllers,
-            let index = viewControllers.index(of: self) {
+            let index = viewControllers.firstIndex(of: self) {
             viewControllers.remove(at: index)
             viewControllers.append(viewController)
             self.navigationController?.viewControllers = viewControllers
@@ -28,7 +28,7 @@ extension UIViewController {
 
     public func removeFromStack() {
         if var viewControllers = self.navigationController?.viewControllers,
-            let index = viewControllers.index(of: self) {
+            let index = viewControllers.firstIndex(of: self) {
             viewControllers.remove(at: index)
             self.navigationController?.viewControllers = viewControllers
         }
